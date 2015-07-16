@@ -11,14 +11,12 @@ package pkg2drpg;
  */
 class General {
     
-    static Block[][] blocks;
-    
-    
     final static int BLOCKS_WIDTH  = 100;
     final static int BLOCKS_HEIGHT = 100;
+    
+    public static Block[][] blocks = new Block[BLOCKS_WIDTH][BLOCKS_HEIGHT];
+    
     public General() {
-        blocks = new Block[BLOCKS_WIDTH][BLOCKS_HEIGHT];
-        
     }
     
 }
