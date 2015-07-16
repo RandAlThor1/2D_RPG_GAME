@@ -5,6 +5,8 @@
  */
 package pkg2drpg;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -38,6 +40,29 @@ class Frame extends JFrame{
         
         this.setVisible(true);
         
+        KeyListener listener = new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == 39) {//left
+                }
+                if (e.getKeyCode() == 38) {//up
+                }
+                if (e.getKeyCode() == 37) {//right
+                }
+                if (e.getKeyCode() == 40) {//down
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        };
+        this.addKeyListener(listener);
     }
     
 }

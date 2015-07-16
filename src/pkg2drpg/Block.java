@@ -26,7 +26,6 @@ public class Block extends JPanel{
         xPos = x;
         yPos = y;
         
-        this.setLocation(xPos * 25, yPos * 25);
         this.setSize(25, 25);
         this.setLayout(null);
         this.setBackground(new Color(0, 0, 0, 0));
@@ -41,15 +40,20 @@ public class Block extends JPanel{
         ForBlock.setLocation(0, 0);
         this.add(ForBlock,0);
         if (yPos <= 25) ForBlock.setIcon(null);
-        if (yPos > 25)  ForBlock.setIcon(new ImageIcon("src\\pkg2drpg\\BlockTextures\\Dirt.jpg"));
+        if (yPos > 5)  ForBlock.setIcon(new ImageIcon("src\\pkg2drpg\\BlockTextures\\Dirt.jpg"));
         
         
     }
     
     public static void GenBlocks(Container cont){
-        for (int i = 0; i < General.BLOCKS_WIDTH; i++) {
-            for (int j = 0; j < General.BLOCKS_HEIGHT; j++) {
-                General.blocks[i][j] = new Block(i,j,cont);
+        for (int i = 0; i < Utill.BLOCKS_WIDTH; i++) {
+            for (int j = 0; j < Utill.BLOCKS_HEIGHT; j++) {
+                Utill.blocks[i][j] = new Block(i,j,cont);
+                if (i < Utill.DISPLAY_WIDTH && j < Utill.DISPLAY_HEIGHT) {
+                    Utill.display[i][j] = Utill.blocks[i][j];
+                    Utill.display[i][j].setLocation(Utill.display[i][j].xPos, Utill.display[i][j].yPos);
+                    System.out.println(i+", "+j);
+                }
             }
         }
     }   
