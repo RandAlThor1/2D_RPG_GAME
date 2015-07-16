@@ -5,6 +5,7 @@
  */
 package pkg2drpg;
 
+import java.awt.Color;
 import java.awt.Container;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -28,6 +29,7 @@ public class Block extends JPanel{
         this.setLocation(xPos * 25, yPos * 25);
         this.setSize(25, 25);
         this.setLayout(null);
+        this.setBackground(new Color(0, 0, 0, 0));
         cont.add(this, 0);
         
 //        BackBlock = new JLabel();
@@ -38,8 +40,8 @@ public class Block extends JPanel{
         ForBlock.setSize(25, 25);
         ForBlock.setLocation(0, 0);
         this.add(ForBlock,0);
-        if (yPos <= 5) ForBlock.setOpaque(false);
-        if (yPos > 5)  ForBlock.setIcon(new ImageIcon("src\\pkg2drpg\\BlockTextures\\Dirt.jpg"));
+        if (yPos <= 25) ForBlock.setIcon(null);
+        if (yPos > 25)  ForBlock.setIcon(new ImageIcon("src\\pkg2drpg\\BlockTextures\\Dirt.jpg"));
         
         
     }
