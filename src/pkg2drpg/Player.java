@@ -55,13 +55,5 @@ public class Player {
         
         this.CharacterName = CharacterName;
     }
-    public static int Roll(int Amount, int Type){
-        int result = 0;
-        for (int i = 0; i < Amount; i++) {
-            result += (int)(Math.random() * Type) + 1;
-        }     
-        return result;
-    }
-    
 }
 
