@@ -49,10 +49,11 @@ public class Block extends JPanel{
         for (int i = 0; i < Utill.BLOCKS_WIDTH; i++) {
             for (int j = 0; j < Utill.BLOCKS_HEIGHT; j++) {
                 Utill.blocks[i][j] = new Block(i,j,cont);
-                if (i < Utill.DISPLAY_WIDTH && j < Utill.DISPLAY_HEIGHT) {
-                    Utill.display[i][j] = Utill.blocks[i][j];
-                    Utill.display[i][j].setLocation(Utill.display[i][j].xPos, Utill.display[i][j].yPos);
-                    System.out.println(i+", "+j);
+                if (i < Utill.DISPLAY_WIDTH + Utill.RightOff && i > Utill.RightOff) {
+                    if (j < Utill.DISPLAY_HEIGHT + Utill.DownOff && j > Utill.DownOff) {
+                        Utill.display[i - Utill.RightOff][j - Utill.DownOff] = Utill.blocks[i][j];
+                        Utill.display[i - Utill.RightOff][j - Utill.DownOff].setLocation(Utill.display[i][j].xPos*25, Utill.display[i][j].yPos*25);
+                    } 
                 }
             }
         }
