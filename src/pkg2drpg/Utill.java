@@ -11,8 +11,8 @@ package pkg2drpg;
  */
 class Utill {
     
-    final static int BLOCKS_HEIGHT = 1000;
-    final static int BLOCKS_WIDTH  = 1000;
+    final static int GAME_HEIGHT = 1000;
+    final static int GAME_WIDTH  = 1000;
     
     final static int DISPLAY_HEIGHT = 29;
     final static int DISPLAY_WIDTH  = 52;
@@ -20,9 +20,9 @@ class Utill {
     final static int BLOCK_SIZE = 25;
     
     static int RightOff = 0;
-    static int DownOff = 0;
+    static int DownOff = 10;
     
-    public static int[][] blocks = new int[BLOCKS_WIDTH][BLOCKS_HEIGHT];
+    public static Block[][] block_grid = new Block[GAME_WIDTH][GAME_HEIGHT];
     public static Block[][] display = new Block[DISPLAY_WIDTH][DISPLAY_HEIGHT];
     
     public Utill() {
