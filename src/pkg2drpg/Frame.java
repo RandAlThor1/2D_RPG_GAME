@@ -61,7 +61,7 @@ class Frame extends JFrame{
                         }
                     }
                 }
-                if (e.getKeyCode() == 38) {//up
+                if (e.getKeyCode() == 38 && Utill.DownOff > 0) {//up
                     Utill.DownOff--;
                     for (int i = 0; i < Utill.DISPLAY_WIDTH; i++) {
                         for (int j = 0; j < Utill.DISPLAY_HEIGHT; j++) {
@@ -81,7 +81,7 @@ class Frame extends JFrame{
                         }
                     }
                 }
-                if (e.getKeyCode() == 40) {//down
+                if (e.getKeyCode() == 40 && Utill.DownOff < Utill.GAME_HEIGHT) {//down
                     Utill.DownOff++;
                     for (int i = 0; i < Utill.DISPLAY_WIDTH; i++) {
                         for (int j = 0; j < Utill.DISPLAY_HEIGHT; j++) {
