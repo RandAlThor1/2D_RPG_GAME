@@ -7,6 +7,7 @@ package pkg2drpg;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,12 +24,13 @@ public class Block extends JPanel{
     
     JLabel ForBlock;
     //JLabel BackBlock;
-    public Block(int x, int y, Container cont/*, int type*/) {
-        xPos = x;
-        yPos = y;
+    public Block(){
+    }
+    
+    public void Render(Container cont, int surface) {
         
         this.setSize(Utill.BLOCK_SIZE, Utill.BLOCK_SIZE);
-        this.setLocation((x - Utill.RightOff) * Utill.BLOCK_SIZE, (y - Utill.DownOff) * Utill.BLOCK_SIZE);
+        this.setLocation((xPos - Utill.RightOff) * Utill.BLOCK_SIZE, (yPos - Utill.DownOff) * Utill.BLOCK_SIZE);
         this.setLayout(null);
         this.setBackground(new Color(0, 0, 0, 0));
         cont.add(this, 0);
@@ -41,21 +43,33 @@ public class Block extends JPanel{
         ForBlock.setSize(Utill.BLOCK_SIZE, Utill.BLOCK_SIZE);
         ForBlock.setLocation(0, 0);
         this.add(ForBlock,0);
-        if (yPos <= 25) ForBlock.setIcon(null);
-        if (yPos > 25)  {ForBlock.setIcon(new ImageIcon("src\\pkg2drpg\\BlockTextures\\Grass.jpg")); 
-        System.out.println();}
+        
+        int surfaceHeight = 25 - surface;
+        if (yPos <= surfaceHeight) ForBlock.setIcon(null);
+        if (yPos == surfaceHeight) ForBlock.setIcon(new ImageIcon("src\\pkg2drpg\\BlockTextures\\Grass.jpg"));
+        if (yPos > surfaceHeight)ForBlock.setIcon(new ImageIcon("src\\pkg2drpg\\BlockTextures\\Dirt.jpg"));
        
         
         
     }
     
     public static void GenBlocks(Container cont){
+        Random surface = new Random();
+        int surfaceHeight = surface.nextInt(5);
         for (int i = 0; i < Utill.GAME_WIDTH; i++) {
+            if (Math.random() >= .5) surfaceHeight++;
+            if (Math.random() < .5) surfaceHeight--;
+            Utill.surfaceHights[i] = surfaceHeight; 
             for (int j = 0; j < Utill.GAME_HEIGHT; j++) {
+                Utill.blockGrid[i][j] = new Block();
+                Utill.blockGrid[i][j].type = 0;
+                Utill.blockGrid[i][j].xPos = i;
+                Utill.blockGrid[i][j].yPos = j;
+                
                 if (i < Utill.DISPLAY_WIDTH + Utill.RightOff && i >= Utill.RightOff) {
                     if (j < Utill.DISPLAY_HEIGHT + Utill.DownOff && j >= Utill.DownOff) {
-                        Utill.display[i - Utill.RightOff][j - Utill.DownOff] = new Block(i, j, cont/*, Utill.block_grid[i][j].type*/); 
-                        Utill.block_grid[i][j] = Utill.display[i - Utill.RightOff][j - Utill.DownOff];
+                        Utill.display[i - Utill.RightOff][j - Utill.DownOff] = Utill.blockGrid[i][j];
+                        Utill.display[i - Utill.RightOff][j - Utill.DownOff].Render(cont, surfaceHeight);
                     } 
                 }
             }
