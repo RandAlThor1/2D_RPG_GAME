@@ -45,9 +45,9 @@ public class Block extends JPanel{
         this.add(ForBlock,0);
         
         int surfaceHeight = 25 - surface;
-        if (yPos <= surfaceHeight) ForBlock.setIcon(null);
-        if (yPos == surfaceHeight) ForBlock.setIcon(new ImageIcon("src\\pkg2drpg\\BlockTextures\\Grass.jpg"));
-        if (yPos > surfaceHeight)ForBlock.setIcon(new ImageIcon("src\\pkg2drpg\\BlockTextures\\Dirt.jpg"));
+        if (yPos <= surfaceHeight) {ForBlock.setIcon(null); type =  0;}
+        if (yPos == surfaceHeight) {ForBlock.setIcon(new ImageIcon("src\\pkg2drpg\\BlockTextures\\Grass.jpg")); type = 1;}
+        if (yPos > surfaceHeight) {ForBlock.setIcon(new ImageIcon("src\\pkg2drpg\\BlockTextures\\Dirt.jpg")); type = 2;}
        
         
         
